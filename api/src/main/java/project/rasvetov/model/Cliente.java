@@ -1,9 +1,14 @@
 package project.rasvetov.model;
 
 
+import javax.persistence.*;
 
+@Entity
+@Table(name = "cliente")
 public class Cliente {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String nome;
 
