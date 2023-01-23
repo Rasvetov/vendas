@@ -9,7 +9,7 @@ import project.rasvetov.model.Cliente;
 import java.util.List;
 
 // Classe responsável por acessar o banco de dados diretamente para fazer operações para o cliente
-public interface ClientesRepository extends JpaRepository<Cliente, Integer> {
+public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
     List<Cliente> findByNomeLike(String nome);
 
