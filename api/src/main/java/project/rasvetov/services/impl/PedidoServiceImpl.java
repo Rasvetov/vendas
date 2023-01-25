@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.rasvetov.dto.ItemPedidoDto;
 import project.rasvetov.dto.PedidoDto;
+import project.rasvetov.enums.StatusPedido;
+import project.rasvetov.exceptions.PedidoNaoEncontradoException;
 import project.rasvetov.exceptions.RegraNegocioException;
 import project.rasvetov.model.Cliente;
 import project.rasvetov.model.ItemPedido;
@@ -43,6 +45,7 @@ public class PedidoServiceImpl implements PedidoService {
         pedido.setTotal(dto.getTotal());
         pedido.setDataPedido(LocalDate.now());
         pedido.setCliente(cliente);
+        pedido.setStatus(StatusPedido.REALIZADO);
 
         List<ItemPedido> itemPedido = converterItens(pedido, dto.getItens());
         repository.save(pedido);
@@ -55,6 +58,17 @@ public class PedidoServiceImpl implements PedidoService {
     public Optional<Pedido> obterPedidoCompleto(Integer id) {
         return repository.findByIdFetchItens(id);
     }
+
+    @Override
+    @Transactional
+    public void atualizaStatus(Integer id, StatusPedido statusPedido){
+        repository
+                .findById(id)
+                .map(pedido -> {
+                    pedido.setStatus(statusPedido);
+                    return repository.save(pedido);
+                }).orElseThrow(() -> new PedidoNaoEncontradoException());
+                }
 
     private List<ItemPedido> converterItens(Pedido pedido ,List<ItemPedidoDto> itens){
         if(itens.isEmpty()){

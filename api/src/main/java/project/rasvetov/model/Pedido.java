@@ -3,6 +3,7 @@ package project.rasvetov.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import project.rasvetov.enums.StatusPedido;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -25,6 +26,9 @@ public class Pedido {
     @Column(name = "data_pedido")
     private LocalDate dataPedido;
     private BigDecimal total;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private StatusPedido status;
     @OneToMany(mappedBy = "pedido")
     private Set<ItemPedido> itens;
 }

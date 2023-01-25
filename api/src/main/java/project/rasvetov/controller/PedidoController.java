@@ -4,9 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import project.rasvetov.dto.AtualizacaoStatusPedidoDto;
 import project.rasvetov.dto.InformacaoItemPedidoDto;
 import project.rasvetov.dto.InformacoesPedidoDto;
 import project.rasvetov.dto.PedidoDto;
+import project.rasvetov.enums.StatusPedido;
 import project.rasvetov.model.ItemPedido;
 import project.rasvetov.model.Pedido;
 import project.rasvetov.services.PedidoService;
@@ -42,6 +44,14 @@ public class PedidoController {
                         new ResponseStatusException(HttpStatus.NOT_FOUND , "Pedido não encontrado."));
     }
 
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateStatus(@PathVariable Integer id, @RequestBody AtualizacaoStatusPedidoDto dto){
+        String novoStatus = dto.getNovoStatus();
+        service.atualizaStatus(id, StatusPedido.valueOf(novoStatus));
+    }
+
+
     private InformacoesPedidoDto converter(Pedido pedido){
         return InformacoesPedidoDto
                 .builder()
@@ -50,6 +60,7 @@ public class PedidoController {
                 .cpf(pedido.getCliente().getCpf())
                 .nomeCliente(pedido.getCliente().getNome())
                 .total(pedido.getTotal())
+                .status(pedido.getStatus().name())
                 .itens(converter((List<ItemPedido>) pedido.getItens()))
                 .build();
     }
