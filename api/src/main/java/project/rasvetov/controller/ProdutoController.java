@@ -8,6 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 import project.rasvetov.model.Produto;
 import project.rasvetov.repositories.ProdutoRepository;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,13 +21,14 @@ public class ProdutoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Produto save(@RequestBody Produto produto){
+    public Produto save(@RequestBody @Valid Produto produto){
         return repository.save(produto);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Integer id, @RequestBody Produto produto){
+    public void update(@PathVariable Integer id,
+                       @RequestBody @Valid Produto produto){
         repository.findById(id).map(p -> {
             produto
                     .setId(p.getId());

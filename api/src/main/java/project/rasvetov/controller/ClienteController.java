@@ -8,6 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 import project.rasvetov.model.Cliente;
 import project.rasvetov.repositories.ClienteRepository;
 
+import javax.validation.Valid;
 import java.util.List;
 
 //classe responsável por processar as requisições e gerar respostas
@@ -32,7 +33,7 @@ public class ClienteController {
     //método utilizado para salvar um cliente no banco de dados
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente save(@RequestBody Cliente cliente){
+    public Cliente save(@RequestBody @Valid Cliente cliente){
         return repository.save(cliente);
     }
 
@@ -52,7 +53,7 @@ public class ClienteController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable Integer id,
-                                 @RequestBody Cliente cliente){
+                       @RequestBody @Valid Cliente cliente){
          repository
                 .findById(id)
                 .map(clienteExistente -> {
