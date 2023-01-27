@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//classe responsável por processar as requisições e gerar respostas referente aos pedidos
 @RestController
 @RequestMapping("/api/pedidos")
 public class PedidoController {

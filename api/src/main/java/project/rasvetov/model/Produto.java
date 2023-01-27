@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-
+// classe responsável por criar os atributos e variáveis dos produtos
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

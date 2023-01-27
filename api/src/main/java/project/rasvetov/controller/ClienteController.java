@@ -11,7 +11,7 @@ import project.rasvetov.repositories.ClienteRepository;
 import javax.validation.Valid;
 import java.util.List;
 
-//classe responsável por processar as requisições e gerar respostas
+//classe responsável por processar as requisições e gerar respostas referente aos clientes
 @RestController
 @RequestMapping("/api/clientes")
 public class ClienteController {

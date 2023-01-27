@@ -8,6 +8,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import java.util.Locale;
 
+//classe responsável pela internacionalização
 @Configuration
 public class internacionalizacaoConfig {
 

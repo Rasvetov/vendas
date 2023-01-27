@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
+//classe que transfere dados simples dentro da aplicação referente as informações dos itens pedidos
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

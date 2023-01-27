@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.Arrays;
 import java.util.List;
 
-
+// classe responsável por auxiliar as classes de exceptions personalizadas
 public class ApiErrors {
     @Getter
     List<String> errors;

@@ -8,7 +8,7 @@ import project.rasvetov.model.Pedido;
 
 import java.util.List;
 import java.util.Optional;
-
+// Classe responsável por acessar o banco de dados diretamente para fazer operações para a classe pedido
 public interface PedidoRepository extends JpaRepository {
 
     List<Pedido> findByCliente(Cliente cliente);

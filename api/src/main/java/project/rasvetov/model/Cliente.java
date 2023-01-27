@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Set;
-
+// classe reponsável por criar as variáveis e atributos dos clientes
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

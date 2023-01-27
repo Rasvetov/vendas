@@ -11,7 +11,7 @@ import project.rasvetov.exceptions.RegraNegocioException;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+//classe responsável por processar as requisições e gerar respostas referente as exceptions
 @RestControllerAdvice
 public class ApplicationControllerAdvice {
 

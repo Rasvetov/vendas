@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
 
-//classe que transfere dados simples dentro da aplicação
+//classe que transfere dados simples dentro da aplicação referente aos pedidos
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

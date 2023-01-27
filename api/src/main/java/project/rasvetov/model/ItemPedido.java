@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
+//classe responsável por criar as variáveis e atributos dos itens pedidos
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

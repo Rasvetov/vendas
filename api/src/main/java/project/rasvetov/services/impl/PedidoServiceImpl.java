@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
+//classe que implementa a regra de negócio
 @RequiredArgsConstructor
 @Service
 public class PedidoServiceImpl implements PedidoService {

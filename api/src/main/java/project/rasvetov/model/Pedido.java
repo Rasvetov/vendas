@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
-
+// classe responsável por criar as variáveis e atributos dos pedidos
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

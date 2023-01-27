@@ -11,6 +11,7 @@ import project.rasvetov.repositories.ProdutoRepository;
 import javax.validation.Valid;
 import java.util.List;
 
+//classe responsável por processar as requisições e gerar respostas referente aos produtos
 @RestController
 @RequestMapping("/api/produtos")
 public class ProdutoController {
