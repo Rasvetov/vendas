@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import project.rasvetov.exceptions.SenhaInvalidaException;
 import project.rasvetov.model.Usuario;
 import project.rasvetov.repositories.UsuarioRepository;
 
@@ -23,6 +24,15 @@ public class UsuarioServiceImpl implements UserDetailsService {
     @Transactional
     public Usuario salvar(Usuario usuario){
         return repository.save(usuario);
+    }
+
+    public UserDetails autenticar(Usuario usuario){
+        UserDetails user = loadUserByUsername(usuario.getLogin());
+        boolean senhasBatem = encoder.matches(usuario.getSenha(), user.getPassword());
+        if (senhasBatem){
+            return user;
+        }
+        throw new SenhaInvalidaException();
     }
 
     @Override
